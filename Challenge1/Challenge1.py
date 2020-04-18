@@ -57,7 +57,6 @@ def veer_left_forward(tf):
 
 #forward(1)
 
-backwards(1.25)
-time.sleep(2)
-veer_left_forward(0.5)
+
+veer_left_forward(1.25)
 

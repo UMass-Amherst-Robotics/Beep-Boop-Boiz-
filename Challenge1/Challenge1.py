@@ -44,9 +44,20 @@ def veer_right_backward(tf):
     time.sleep(tf)
     gpio.cleanup()
 
+def veer_left_forward(tf):
+    init()
+    gpio.output(7, False)
+    gpio.output(11, True)
+    gpio.output(13, True)
+    gpio.output(15, True)
+    time.sleep(tf)
+    gpio.cleanup()
+
+
+
 #forward(1)
 
-#backwards(1)
-
-veer_right_backward(0.5)
+backwards(1.25)
+time.sleep(2)
+veer_left_forward(0.5)
 

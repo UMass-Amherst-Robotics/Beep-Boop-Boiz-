@@ -107,7 +107,7 @@ def test():
             start_distance = get_distance()
             print(get_distance())
             forward(tf)
-            time.sleep(1)
+            time.sleep(5)
             end_distance = get_distance()
             print(get_distance())
             distance_moved = end_distance - start_distance
@@ -117,7 +117,7 @@ def test():
             start_distance = get_distance()
             print(get_distance())
             backwards(tf)
-            time.sleep(1)
+            time.sleep(5)
             end_distance = get_distance()
             print(get_distance())
             distance_moved = end_distance - start_distance

@@ -103,7 +103,7 @@ def test():
     while 1:
         direction = input("What direction do you want to go?\n")
         tf = input("How many seconds? \n")
-        if direction == 'for':
+        if direction == 'forward':
             start_distance = get_distance()
             print(get_distance())
             forwards(tf)

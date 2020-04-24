@@ -173,43 +173,51 @@ def main():
                 oldDistance = get_distance()
                 while True:
                     pivot_left(.25)
+                    time.sleep(1)
                     newDistance = get_distance()
                     if newDistance < oldDistance:
                         state = "cornerFoundMovingLeft"
                         print(state)
-                        return  # is return now, change back to break after test
+                        break
                     oldDistance = newDistance
 
             else:
                 oldDistance = get_distance()
                 while True:
                     pivot_right(.25)
+                    time.sleep(1)
                     newDistance = get_distance()
                     if newDistance < oldDistance:
                         state = "cornerFoundMovingRight"
                         print(state)
-                        return  # is return now, change back to break after test
+                        break  
                     oldDistance = newDistance
-        """
+
         elif state == "cornerFoundMovingLeft":
             oldDistance = get_distance()
             while True:
-                pivot_left(smallDistance)
+                pivot_left(.25)
+                time.sleep(1)
                 newDistance = get_distance()
                 if newDistance > oldDistance:
-                    state = "approachingWall"  # possibly move backwards like half the distance we have been incrementing by to perfect positioning?
-                    break
+                    state = "approachingWall"
+                    print(state)
+                    pivot_right(.125)
+                    return  # is return now, change back to break after test
                 oldDistance = newDistance
         elif state == "cornerFoundMovingRight":
             oldDistance = get_distance()
             while True:
-                pivot_right(smallDistance)
+                pivot_right(.25)
+                time.sleep(1)
                 newDistance = get_distance()
                 if newDistance > oldDistance:
-                    state = "approachingWall"  # possibly move backwards like half the distance we have been incrementing by to perfect positioning?
-                    break
+                    state = "approachingWall"
+                    print(state)
+                    pivot_left(.125)
+                    return  # is return now, change back to break after test
                 oldDistance = newDistance
-"""
+
 
 def choice():
     choice = raw_input("what function would you like to run")

@@ -83,25 +83,24 @@ def pivot_right(tf):
 def get_distance():
     init_sonar()
     current_sum_dist = 0
-    for i in range(0, 10):
-        gpio.output(TRIG, True)
-        time.sleep(0.00001)
-        gpio.output(TRIG, False)
-        # initializing variables
-        pulse_start = 0
-        pulse_end = 0
-        while gpio.input(ECHO) == 0:
-            pulse_start = time.time()
-        while gpio.input(ECHO) == 1:
-            pulse_end = time.time()
-        pulse_duration = pulse_end - pulse_start
-        distance_cm = pulse_duration * 17150
-        distance_cm = round(distance_cm, 2)
-        current_sum_dist += distance_cm
+    gpio.output(TRIG, True)
+    time.sleep(0.00001)
+    gpio.output(TRIG, False)
+    # initializing variables
+    pulse_start = 0
+    pulse_end = 0
+    while gpio.input(ECHO) == 0:
+        pulse_start = time.time()
+    while gpio.input(ECHO) == 1:
+        pulse_end = time.time()
+    pulse_duration = pulse_end - pulse_start
+    distance_cm = pulse_duration * 17150
+    distance_cm = round(distance_cm, 2)
+    #current_sum_dist += distance_cm
 
-    final_distance = current_sum_dist/10
+    #final_distance = current_sum_dist/10
     gpio.cleanup()
-    return final_distance
+    return distance_cm
 
 def test():
     while 1:

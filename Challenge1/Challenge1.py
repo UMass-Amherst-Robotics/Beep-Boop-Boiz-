@@ -8,7 +8,7 @@ def init_sonar():
     gpio.setup(TRIG, gpio.OUT)
     gpio.setup(ECHO, gpio.IN)
     gpio.output(TRIG, False)
-    time.sleep(2)
+    time.sleep(1)
 
 def init_motor():
     gpio.setmode(gpio.BOARD)
@@ -102,7 +102,7 @@ def get_distance():
 def test():
     start_distance = get_distance()
     print(get_distance())
-    forward(0.25)
+    backwards(0.25)
     time.sleep(1)
     end_distance = get_distance()
     print(get_distance())

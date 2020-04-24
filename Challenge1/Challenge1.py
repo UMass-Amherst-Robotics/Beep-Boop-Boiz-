@@ -190,7 +190,7 @@ def main():
                     if newDistance < oldDistance:
                         state = "cornerFoundMovingRight"
                         print(state)
-                        break  
+                        break
                     oldDistance = newDistance
 
         elif state == "cornerFoundMovingLeft":
@@ -202,7 +202,7 @@ def main():
                 if newDistance > oldDistance:
                     state = "approachingWall"
                     print(state)
-                    pivot_right(.125)
+                    #pivot_right(.125)
                     return  # is return now, change back to break after test
                 oldDistance = newDistance
         elif state == "cornerFoundMovingRight":
@@ -214,13 +214,13 @@ def main():
                 if newDistance > oldDistance:
                     state = "approachingWall"
                     print(state)
-                    pivot_left(.125)
+                    #pivot_left(.125)
                     return  # is return now, change back to break after test
                 oldDistance = newDistance
 
 
 def choice():
-    choice = raw_input("what function would you like to run")
+    choice = raw_input("what function would you like to run\n")
     if choice == 'test':
         test()
     if choice == 'main':

@@ -88,9 +88,9 @@ def get_distance():
     # initializing variables
     pulse_start = 0
     pulse_end = 0
-    while gpio.input(Echo) == 0:
+    while gpio.input(ECHO) == 0:
         pulse_start = time.time()
-    while gpio.input(Echo) == 1:
+    while gpio.input(ECHO) == 1:
         pulse_end = time.time()
 
     pulse_duration = pulse_end - pulse_start
@@ -100,9 +100,9 @@ def get_distance():
     return distance_cm
 
 def test():
-    pivot_right(1)
+    pivot_right(1.25)
     time.sleep(5)
-    pivot_left(1)
+    pivot_left(1.25)
     print(get_distance())
 
 

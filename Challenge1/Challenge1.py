@@ -162,32 +162,35 @@ def main():
             else:
                 state = "seekingCorner"
                 print(state)
-                break
-        """
+
         elif state == "seekingCorner":
-            pivot_left(someDistance)
+            pivot_left(.25)
             leftValue = get_distance()
-            pivot_right(2 * someDistance)
+            pivot_right(.5)
             rightValue = get_distance()
             if leftValue > rightValue:
-                pivot_left(2 * someDistance)
+                pivot_left(.5)
                 oldDistance = get_distance()
                 while True:
-                    pivot_left(smallDistance)
+                    pivot_left(.25)
                     newDistance = get_distance()
                     if newDistance < oldDistance:
                         state = "cornerFoundMovingLeft"
-                        break
+                        print(state)
+                        return  # is return now, change back to break after test
                     oldDistance = newDistance
+
             else:
                 oldDistance = get_distance()
                 while True:
-                    pivot_right(smallDistance)
+                    pivot_right(.25)
                     newDistance = get_distance()
                     if newDistance < oldDistance:
                         state = "cornerFoundMovingRight"
-                        break
-                        oldDistance = newDistance
+                        print(state)
+                        return  # is return now, change back to break after test
+                    oldDistance = newDistance
+        """
         elif state == "cornerFoundMovingLeft":
             oldDistance = get_distance()
             while True:

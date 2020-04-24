@@ -108,41 +108,41 @@ def test():
         if direction == 'forward':
             tf = input("How many seconds? \n")
             start_distance = get_distance()
-            print(get_distance())
+            print(start_distance)
             forward(tf)
             time.sleep(2)
             end_distance = get_distance()
-            print(get_distance())
+            print(end_distance)
             distance_moved = end_distance - start_distance
             print(distance_moved)
         if direction == 'back':
             tf = input("How many seconds? \n")
             start_distance = get_distance()
-            print(get_distance())
+            print(start_distance)
             backwards(tf)
             time.sleep(2)
             end_distance = get_distance()
-            print(get_distance())
+            print(end_distance)
             distance_moved = end_distance - start_distance
             print(distance_moved)
         if direction == 'PL':
             tf = input("How many seconds? \n")
             start_distance = get_distance()
-            print(get_distance())
+            print(start_distance)
             pivot_left(tf)
             time.sleep(2)
             end_distance = get_distance()
-            print(get_distance())
+            print(end_distance)
             distance_moved = end_distance - start_distance
             print(distance_moved)
         if direction == 'PR':
             tf = input("How many seconds? \n")
             start_distance = get_distance()
-            print(get_distance())
+            print(start_distance)
             pivot_right(tf)
             time.sleep(2)
             end_distance = get_distance()
-            print(get_distance())
+            print(end_distance)
             distance_moved = end_distance - start_distance
             print(distance_moved)
 

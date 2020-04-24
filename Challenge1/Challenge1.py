@@ -3,20 +3,22 @@ import time
 TRIG = 23
 ECHO = 24
 
-def init():
+def init_sonar():
     gpio.setmode(gpio.BCM)
-    gpio.setmode(gpio.BOARD)
     gpio.setup(TRIG, gpio.OUT)
     gpio.setup(ECHO, gpio.IN)
     gpio.output(TRIG, False)
     time.sleep(2)
+
+def init_motor():
+    gpio.setmode(gpio.BOARD)
     gpio.setup(7, gpio.OUT)
     gpio.setup(11, gpio.OUT)
     gpio.setup(13, gpio.OUT)
     gpio.setup(15, gpio.OUT)
 
 def forward(tf):
-    init()
+    init_motor()
     gpio.output(7, False)
     gpio.output(11, True)
     gpio.output(13, True)
@@ -25,7 +27,7 @@ def forward(tf):
     gpio.cleanup()
 
 def backwards(tf):
-    init()
+    init_motor()
     gpio.output(7, True)
     gpio.output(11, False)
     gpio.output(13, False)
@@ -34,7 +36,7 @@ def backwards(tf):
     gpio.cleanup()
 
 def veer_right_forward(tf):
-    init()
+    init_motor()
     gpio.output(7, True)
     gpio.output(11, True)
     gpio.output(13, True)
@@ -43,7 +45,7 @@ def veer_right_forward(tf):
     gpio.cleanup()
 
 def veer_right_backward(tf):
-    init()
+    init_motor()
     gpio.output(7, False)
     gpio.output(11, False)
     gpio.output(13, False)
@@ -52,7 +54,7 @@ def veer_right_backward(tf):
     gpio.cleanup()
 
 def veer_left_forward(tf):
-    init()
+    init_motor()
     gpio.output(7, False)
     gpio.output(11, True)
     gpio.output(13, True)
@@ -61,7 +63,7 @@ def veer_left_forward(tf):
     gpio.cleanup()
 
 def pivot_right(tf):
-    init()
+    init_motor()
     gpio.output(7, False)
     gpio.output(11, True)
     gpio.output(13, False)
@@ -69,8 +71,8 @@ def pivot_right(tf):
     time.sleep(tf)
     gpio.cleanup()
 
-def pivot_right(tf):
-    init()
+def pivot_left(tf):
+    init_motor()
     gpio.output(7, True)
     gpio.output(11, False)
     gpio.output(13, True)
@@ -79,6 +81,7 @@ def pivot_right(tf):
     gpio.cleanup()
 
 def get_distance():
+    init_sonar()
     gpio.output(TRIG, True)
     time.sleep(0.00001)
     gpio.output(TRIG, False)
@@ -93,6 +96,7 @@ def get_distance():
     pulse_duration = pulse_end - pulse_start
     distance_cm = pulse_duration * 17150
     distance_cm = round(distance_cm, 2)
+    gpio.cleanup()
     return distance_cm
 
 def test():

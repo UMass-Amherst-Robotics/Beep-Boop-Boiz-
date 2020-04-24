@@ -95,15 +95,14 @@ def get_distance():
     distance_cm = round(distance_cm, 2)
     return distance_cm
 
-def main():
+def test():
     pivot_right(1)
     time.sleep(5)
     pivot_left(1)
     print(get_distance())
 
 
-if __name__ == '__main__':
-    main()
+test()
 
 
 

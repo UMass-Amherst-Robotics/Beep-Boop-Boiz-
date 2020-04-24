@@ -201,22 +201,31 @@ def main():
                 pivot_left(.25)
                 time.sleep(1)
                 newDistance = get_distance()
+                if newDistance > oldDistance and newDistance > 80:
+                    state = "approachingWall"
+                    print(state)
+                    pivot_right(.25)
+                    return  # is return now, change back to break after test
                 if newDistance > oldDistance:
                     state = "approachingWall"
                     print(state)
-                    #pivot_right(.125)
                     return  # is return now, change back to break after test
                 oldDistance = newDistance
+
         elif state == "cornerFoundMovingRight":
             oldDistance = get_distance()
             while True:
                 pivot_right(.25)
                 time.sleep(1)
                 newDistance = get_distance()
+                if newDistance > oldDistance and newDistance > 80:
+                    state = "approachingWall"
+                    print(state)
+                    pivot_left(.25)
+                    return  # is return now, change back to break after test
                 if newDistance > oldDistance:
                     state = "approachingWall"
                     print(state)
-                    #pivot_left(.125)
                     return  # is return now, change back to break after test
                 oldDistance = newDistance
         '''    

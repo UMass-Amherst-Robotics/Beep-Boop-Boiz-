@@ -211,8 +211,14 @@ def main():
                 oldDistance = newDistance
 """
 
+def choice():
+    choice = raw_input("what function would you like to run")
+    if choice == 'test':
+        test()
+    if choice == 'main':
+        main()
 
-test()
+
 
 
 

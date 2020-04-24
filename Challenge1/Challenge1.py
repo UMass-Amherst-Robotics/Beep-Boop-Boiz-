@@ -82,22 +82,26 @@ def pivot_left(tf):
 
 def get_distance():
     init_sonar()
-    gpio.output(TRIG, True)
-    time.sleep(0.00001)
-    gpio.output(TRIG, False)
-    # initializing variables
-    pulse_start = 0
-    pulse_end = 0
-    while gpio.input(ECHO) == 0:
-        pulse_start = time.time()
-    while gpio.input(ECHO) == 1:
-        pulse_end = time.time()
+    current_sum_dist = 0
+    for i in range(0, 10):
+        gpio.output(TRIG, True)
+        time.sleep(0.00001)
+        gpio.output(TRIG, False)
+        # initializing variables
+        pulse_start = 0
+        pulse_end = 0
+        while gpio.input(ECHO) == 0:
+            pulse_start = time.time()
+        while gpio.input(ECHO) == 1:
+            pulse_end = time.time()
+        pulse_duration = pulse_end - pulse_start
+        distance_cm = pulse_duration * 17150
+        distance_cm = round(distance_cm, 2)
+        current_sum_dist += distance_cm
 
-    pulse_duration = pulse_end - pulse_start
-    distance_cm = pulse_duration * 17150
-    distance_cm = round(distance_cm, 2)
+    final_distance = current_sum_dist/10
     gpio.cleanup()
-    return distance_cm
+    return final_distance
 
 def test():
     while 1:
@@ -129,16 +133,18 @@ def main():
     while True:
         if state == "approachingWall":
             distance_from_wall = get_distance()
+            print(get_distance())
             if distance_from_wall > 50:
-                forward(30)  # change argument to time value that moves you 30 cm
+                forward(.5)  # change argument to time value that moves you 30 cm
+                time.sleep(1)
             elif 30 < distance_from_wall <= 50:
-                forward(20) # change argument to time value that moves you 20 cm
-            elif 15 < distance_from_wall <= 30:
-                forward(10) # change argument to time value that moves you 20 cm
-            elif 7.5 < distance_from_wall <= 15:
-                forward(5) # change argument to time value that moves you 20 cm
+                forward(.125)  # change argument to time value that moves you 20 cm
+                time.sleep(1)
             else:
                 state = "seekingCorner"
+                print(state)
+                break
+        """
         elif state == "seekingCorner":
             pivot_left(someDistance)
             leftValue = get_distance()
@@ -181,7 +187,10 @@ def main():
                     state = "approachingWall"  # possibly move backwards like half the distance we have been incrementing by to perfect positioning?
                     break
                 oldDistance = newDistance
-test()
+"""
+
+
+main()
 
 
 

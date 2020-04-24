@@ -101,6 +101,8 @@ def main():
     pivot_left(1)
     print(get_distance())
 
+main()
+
 
 
 

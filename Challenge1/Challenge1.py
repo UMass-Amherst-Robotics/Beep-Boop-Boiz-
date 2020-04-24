@@ -106,7 +106,7 @@ def test():
             tf = input("How many seconds? \n")
             start_distance = get_distance()
             print(get_distance())
-            forwards(tf)
+            forward(tf)
             time.sleep(1)
             end_distance = get_distance()
             print(get_distance())

@@ -124,7 +124,63 @@ def test():
             print(distance_moved)
 
 
-
+def main():
+    state = "approachingWall"
+    while True:
+        if state == "approachingWall":
+            distance_from_wall = get_distance()
+            if distance_from_wall > 50:
+                forward(30)  # change argument to time value that moves you 30 cm
+            elif 30 < distance_from_wall <= 50:
+                forward(20) # change argument to time value that moves you 20 cm
+            elif 15 < distance_from_wall <= 30:
+                forward(10) # change argument to time value that moves you 20 cm
+            elif 7.5 < distance_from_wall <= 15:
+                forward(5) # change argument to time value that moves you 20 cm
+            else:
+                state = "seekingCorner"
+        elif state == "seekingCorner":
+            pivot_left(someDistance)
+            leftValue = get_distance()
+            pivot_right(2 * someDistance)
+            rightValue = get_distance()
+            if leftValue > rightValue:
+                pivot_left(2 * someDistance)
+                oldDistance = get_distance()
+                while True:
+                    pivot_left(smallDistance)
+                    newDistance = get_distance()
+                    if newDistance < oldDistance:
+                        state = "cornerFoundMovingLeft"
+                        break
+                    oldDistance = newDistance
+            else:
+                oldDistance = get_distance()
+                while True:
+                    pivot_right(smallDistance)
+                    newDistance = get_distance()
+                    if newDistance < oldDistance:
+                        state = "cornerFoundMovingRight"
+                        break
+                        oldDistance = newDistance
+        elif state == "cornerFoundMovingLeft":
+            oldDistance = get_distance()
+            while True:
+                pivot_left(smallDistance)
+                newDistance = get_distance()
+                if newDistance > oldDistance:
+                    state = "approachingWall"  # possibly move backwards like half the distance we have been incrementing by to perfect positioning?
+                    break
+                oldDistance = newDistance
+        elif state == "cornerFoundMovingRight":
+            oldDistance = get_distance()
+            while True:
+                pivot_right(smallDistance)
+                newDistance = get_distance()
+                if newDistance > oldDistance:
+                    state = "approachingWall"  # possibly move backwards like half the distance we have been incrementing by to perfect positioning?
+                    break
+                oldDistance = newDistance
 test()
 
 

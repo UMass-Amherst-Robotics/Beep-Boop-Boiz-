@@ -100,14 +100,27 @@ def get_distance():
     return distance_cm
 
 def test():
-    start_distance = get_distance()
-    print(get_distance())
-    backwards(0.5)
-    time.sleep(1)
-    end_distance = get_distance()
-    print(get_distance())
-    distance_moved = end_distance - start_distance
-    print(distance_moved)
+    while 1:
+        direction = input("What direction do you want to go?\n")
+        tf = input("How many seconds? \n")
+        if direction is 'f':
+            start_distance = get_distance()
+            print(get_distance())
+            forwards(tf)
+            time.sleep(1)
+            end_distance = get_distance()
+            print(get_distance())
+            distance_moved = end_distance - start_distance
+            print(distance_moved)
+        if direction is 'b':
+            start_distance = get_distance()
+            print(get_distance())
+            backwards(tf)
+            time.sleep(1)
+            end_distance = get_distance()
+            print(get_distance())
+            distance_moved = end_distance - start_distance
+            print(distance_moved)
 
 
 

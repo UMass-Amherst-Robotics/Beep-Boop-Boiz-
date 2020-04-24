@@ -149,6 +149,7 @@ def test():
 
 def main():
     state = "approachingWall"
+    status = ''
     while True:
         if state == "approachingWall":
             distance_from_wall = get_distance()
@@ -163,7 +164,7 @@ def main():
                 state = "seekingCorner"
                 print(state)
 
-        elif state == "seekingCorner":
+        elif state == "seekingCorner" and status == '':
             pivot_left(.25)
             leftValue = get_distance()
             pivot_right(.5)
@@ -172,23 +173,24 @@ def main():
                 pivot_left(.5)
                 oldDistance = get_distance()
                 while True:
-                    pivot_left(.25)
+                    pivot_left(.2)
                     time.sleep(1)
                     newDistance = get_distance()
                     if newDistance < oldDistance:
                         state = "cornerFoundMovingLeft"
+                        status = 'Left'
                         print(state)
                         break
                     oldDistance = newDistance
-
             else:
                 oldDistance = get_distance()
                 while True:
-                    pivot_right(.25)
+                    pivot_right(.2)
                     time.sleep(1)
                     newDistance = get_distance()
                     if newDistance < oldDistance:
                         state = "cornerFoundMovingRight"
+                        status = 'Right'
                         print(state)
                         break
                     oldDistance = newDistance
@@ -217,7 +219,31 @@ def main():
                     #pivot_left(.125)
                     return  # is return now, change back to break after test
                 oldDistance = newDistance
+        '''    
+                elif state == "seekingCorner" and status == 'Left':
+                    oldDistance = get_distance()
+                    while True:
+                        pivot_left(.25)
+                        time.sleep(1)
+                        newDistance = get_distance()
+                        if newDistance < oldDistance:
+                            state = "cornerFoundMovingLeft"
+                            print(state)
+                            break
+                        oldDistance = newDistance
 
+                elif state == "seekingCorner" and status == 'Right':
+                    oldDistance = get_distance()
+                    while True:
+                        pivot_right(.25)
+                        time.sleep(1)
+                        newDistance = get_distance()
+                        if newDistance < oldDistance:
+                            state = "cornerFoundMovingRight"
+                            print(state)
+                            break
+                        oldDistance = newDistance
+                '''
 
 def choice():
     choice = raw_input("what function would you like to run\n")

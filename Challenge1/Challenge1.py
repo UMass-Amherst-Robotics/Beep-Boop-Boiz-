@@ -101,7 +101,7 @@ def get_distance():
 
 def test():
     while 1:
-        direction = input("What direction do you want to go?\n")
+        direction = raw_input("What direction do you want to go?\n")
         if direction == 'forward':
             tf = input("How many seconds? \n")
             start_distance = get_distance()

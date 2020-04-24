@@ -62,7 +62,7 @@ def veer_left_forward(tf):
     time.sleep(tf)
     gpio.cleanup()
 
-def pivot_right(tf):
+def pivot_left(tf):
     init_motor()
     gpio.output(7, False)
     gpio.output(11, True)
@@ -71,7 +71,7 @@ def pivot_right(tf):
     time.sleep(tf)
     gpio.cleanup()
 
-def pivot_left(tf):
+def pivot_right(tf):
     init_motor()
     gpio.output(7, True)
     gpio.output(11, False)

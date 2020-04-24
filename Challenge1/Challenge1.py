@@ -100,10 +100,15 @@ def get_distance():
     return distance_cm
 
 def test():
-    pivot_right(1.25)
-    time.sleep(5)
-    pivot_left(1.25)
+    start_distance = get_distance()
     print(get_distance())
+    forward(0.25)
+    time.sleep(1)
+    end_distance = get_distance()
+    print(get_distance())
+    distance_moved = end_distance - start_distance
+    print(distance_moved)
+
 
 
 test()

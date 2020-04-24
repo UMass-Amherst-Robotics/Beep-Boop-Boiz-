@@ -102,7 +102,7 @@ def get_distance():
 def test():
     start_distance = get_distance()
     print(get_distance())
-    backwards(0.25)
+    forward(0.25)
     time.sleep(1)
     end_distance = get_distance()
     print(get_distance())

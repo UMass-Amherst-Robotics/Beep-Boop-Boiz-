@@ -219,6 +219,7 @@ def choice():
         main()
 
 
+choice()
 
 
 

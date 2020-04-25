@@ -173,7 +173,7 @@ def main():
                 pivot_left(.5)
                 oldDistance = get_distance()
                 while True:
-                    pivot_left(.2)
+                    pivot_left(.22)
                     time.sleep(1)
                     newDistance = get_distance()
                     if newDistance < oldDistance:
@@ -185,7 +185,7 @@ def main():
             else:
                 oldDistance = get_distance()
                 while True:
-                    pivot_right(.2)
+                    pivot_right(.22)
                     time.sleep(1)
                     newDistance = get_distance()
                     if newDistance < oldDistance:
@@ -199,7 +199,7 @@ def main():
             oldDistance = get_distance()
             while True:
                 if oldDistance > 80:
-                    time_value = .17
+                    time_value = .185
                 else:
                     time_value = .25
                 pivot_left(time_value)
@@ -207,7 +207,7 @@ def main():
                 newDistance = get_distance()
                 if newDistance > oldDistance and newDistance > 80:
                     state = "approachingWall"
-                    pivot_left(.125)
+                    #pivot_left(.125)
                     print(state)
                     return  # is return now, change back to break after test
                 if newDistance > oldDistance:
@@ -220,7 +220,7 @@ def main():
             oldDistance = get_distance()
             while True:
                 if oldDistance > 80:
-                    time_value = .17
+                    time_value = .185
                 else:
                     time_value = .25
                 pivot_right(time_value)
@@ -228,7 +228,7 @@ def main():
                 newDistance = get_distance()
                 if newDistance > oldDistance and newDistance > 80:
                     state = "approachingWall"
-                    pivot_left(.125)
+                    #pivot_left(.125)
                     print(state)
                     return  # is return now, change back to break after test
                 if newDistance > oldDistance:

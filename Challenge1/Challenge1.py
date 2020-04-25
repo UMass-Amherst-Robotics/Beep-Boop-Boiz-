@@ -218,7 +218,7 @@ def main():
                 if newDistance > oldDistance:
                     state = "approachingWall"
                     print(state)
-                    return  # is return now, change back to break after test
+                    break  # is return now, change back to break after test
                 oldDistance = newDistance
 
         elif state == "cornerFoundMovingRight":
@@ -243,7 +243,7 @@ def main():
                 if newDistance > oldDistance:
                     state = "approachingWall"
                     print(state)
-                    return  # is return now, change back to break after test
+                    break  # is return now, change back to break after test
 
                 oldDistance = newDistance
         '''    

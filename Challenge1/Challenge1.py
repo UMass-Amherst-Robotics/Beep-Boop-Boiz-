@@ -190,8 +190,8 @@ def main():
                 newDistance = get_distance()
                 total_distance += abs(oldDistance - newDistance)
                 velocity = (abs(oldDistance - newDistance))/tf
-                print("Total Distance Traveled: " + str(total_distance))
-                print("Velocity: " + str(velocity))
+                print("Total Distance Traveled: " + str(total_distance) + 'cm')
+                print("Velocity: " + str(velocity) + 'cm/s')
                 if abs(newDistance - oldDistance) < 2:
                     backwards(.2)  # case where robot gets stuck approaching a wall and fixes itself
                     pivot_right(.25)
@@ -203,8 +203,8 @@ def main():
                 newDistance = get_distance()
                 total_distance += abs(oldDistance - newDistance)
                 velocity = (abs(oldDistance - newDistance)) / tf
-                print("Total Distance Traveled: " + str(total_distance))
-                print("Velocity: " + str(velocity))
+                print("Total Distance Traveled: " + str(total_distance) + 'cm')
+                print("Velocity: " + str(velocity) + 'cm/s')
                 if abs(newDistance - oldDistance) < 2:  # case where robot gets stuck approaching a wall and fixes itself
                     backwards(.2)
                     pivot_right(.25)

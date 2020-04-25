@@ -157,7 +157,7 @@ def main():
             if distance_from_wall > 60:
                 forward(.5)  # change argument to time value that moves you 30 cm
                 time.sleep(1)
-            elif 30 < distance_from_wall <= 60:
+            elif 35 < distance_from_wall <= 60:
                 forward(.125)  # change argument to time value that moves you 20 cm
                 time.sleep(1)
             else:

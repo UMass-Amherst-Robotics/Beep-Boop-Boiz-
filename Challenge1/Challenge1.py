@@ -153,14 +153,24 @@ def main():
     status = ''
     while True:
         if state == "approachingWall":
-            distance_from_wall = get_distance()
+            newDistance = get_distance()
             print(get_distance())
-            if distance_from_wall > 60:
+            if newDistance > 60:
                 forward(.5)  # change argument to time value that moves you 30 cm
                 time.sleep(1)
-            elif 35 < distance_from_wall <= 60:
+                oldDistance = newDistance
+                newDistance = get_distance()
+                if abs(newDistance - oldDistance) < 2:
+                    backwards(.2)
+                    pivot_right(.25)
+            elif 35 < newDistance <= 60:
                 forward(.125)  # change argument to time value that moves you 20 cm
                 time.sleep(1)
+                oldDistance = newDistance
+                newDistance = get_distance()
+                if abs(newDistance - oldDistance) < 2:
+                    backwards(.2)
+                    pivot_right(.25)
             else:
                 state = "seekingCorner"
                 print(state)

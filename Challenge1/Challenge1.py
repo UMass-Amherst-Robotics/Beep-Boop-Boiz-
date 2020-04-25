@@ -83,24 +83,25 @@ def pivot_right(tf):
 def get_distance():
     init_sonar()
     current_sum_dist = 0
-    gpio.output(TRIG, True)
-    time.sleep(0.00001)
-    gpio.output(TRIG, False)
-    # initializing variables
-    pulse_start = 0
-    pulse_end = 0
-    while gpio.input(ECHO) == 0:
-        pulse_start = time.time()
-    while gpio.input(ECHO) == 1:
-        pulse_end = time.time()
-    pulse_duration = pulse_end - pulse_start
-    distance_cm = pulse_duration * 17150
-    distance_cm = round(distance_cm, 2)
-    #current_sum_dist += distance_cm
+    for i in range(0,10):
+        gpio.output(TRIG, True)
+        time.sleep(0.00001)
+        gpio.output(TRIG, False)
+        # initializing variables
+        pulse_start = 0
+        pulse_end = 0
+        while gpio.input(ECHO) == 0:
+            pulse_start = time.time()
+        while gpio.input(ECHO) == 1:
+            pulse_end = time.time()
+        pulse_duration = pulse_end - pulse_start
+        distance_cm = pulse_duration * 17150
+        distance_cm = round(distance_cm, 2)
+        current_sum_dist += distance_cm
 
-    #final_distance = current_sum_dist/10
+    final_distance = current_sum_dist/10
     gpio.cleanup()
-    return distance_cm
+    return final_distance
 
 def test():
     while 1:
@@ -206,21 +207,24 @@ def main():
                 time.sleep(1)
                 newDistance = get_distance()
                 print(newDistance)
-                if newDistance > oldDistance and newDistance > 80:
-                    state = "approachingWall"
-                    #pivot_left(.125)
-                    print(state)
-                    return  # is return now, change back to break after test
                 if newDistance > oldDistance:
                     state = "approachingWall"
+                    high_int_val = oldDistance + 1
+                    while newDistance > high_int_val:
+                        newDistance = get_distance()
+                        pivot_left(.075)
                     print(state)
                     return  # is return now, change back to break after test
+                #if newDistance > oldDistance:
+                #    state = "approachingWall"
+                #    print(state)
+                #    return  # is return now, change back to break after test
                 oldDistance = newDistance
 
         elif state == "cornerFoundMovingRight":
             oldDistance = get_distance()
             while True:
-                if oldDistance > 80:
+                if oldDistance > 70:
                     time_value = .185
                 else:
                     time_value = .2
@@ -228,15 +232,18 @@ def main():
                 time.sleep(1)
                 newDistance = get_distance()
                 print(newDistance)
-                if newDistance > oldDistance and newDistance > 80:
-                    state = "approachingWall"
-                    #pivot_left(.125)
-                    print(state)
-                    return  # is return now, change back to break after test
                 if newDistance > oldDistance:
                     state = "approachingWall"
+                    high_int_val = oldDistance + 1
+                    while newDistance > high_int_val:
+                        newDistance = get_distance()
+                        pivot_left(.075)
                     print(state)
                     return  # is return now, change back to break after test
+                #if newDistance > oldDistance:
+                #    state = "approachingWall"
+                 #   print(state)
+                #    return  # is return now, change back to break after test
 
                 oldDistance = newDistance
         '''    

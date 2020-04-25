@@ -207,6 +207,7 @@ def main():
                 newDistance = get_distance()
                 if newDistance > oldDistance and newDistance > 80:
                     state = "approachingWall"
+                    pivot_left(.125)
                     print(state)
                     return  # is return now, change back to break after test
                 if newDistance > oldDistance:
@@ -227,6 +228,7 @@ def main():
                 newDistance = get_distance()
                 if newDistance > oldDistance and newDistance > 80:
                     state = "approachingWall"
+                    pivot_left(.125)
                     print(state)
                     return  # is return now, change back to break after test
                 if newDistance > oldDistance:

@@ -154,10 +154,10 @@ def main():
         if state == "approachingWall":
             distance_from_wall = get_distance()
             print(get_distance())
-            if distance_from_wall > 60:
+            if distance_from_wall > 70:
                 forward(.5)  # change argument to time value that moves you 30 cm
                 time.sleep(1)
-            elif 35 < distance_from_wall <= 60:
+            elif 55 < distance_from_wall <= 70:
                 forward(.125)  # change argument to time value that moves you 20 cm
                 time.sleep(1)
             else:

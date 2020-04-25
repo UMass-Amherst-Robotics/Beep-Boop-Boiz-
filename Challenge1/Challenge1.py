@@ -207,7 +207,7 @@ def main():
                 time.sleep(1)
                 newDistance = get_distance()
                 print(newDistance)
-                if newDistance > oldDistance:
+                if newDistance > oldDistance and newDistance > 80:
                     state = "approachingWall"
                     high_int_val = oldDistance + 1
                     while newDistance > high_int_val:
@@ -215,10 +215,10 @@ def main():
                         pivot_left(.075)
                     print(state)
                     return  # is return now, change back to break after test
-                #if newDistance > oldDistance:
-                #    state = "approachingWall"
-                #    print(state)
-                #    return  # is return now, change back to break after test
+                if newDistance > oldDistance:
+                    state = "approachingWall"
+                    print(state)
+                    return  # is return now, change back to break after test
                 oldDistance = newDistance
 
         elif state == "cornerFoundMovingRight":
@@ -232,7 +232,7 @@ def main():
                 time.sleep(1)
                 newDistance = get_distance()
                 print(newDistance)
-                if newDistance > oldDistance:
+                if newDistance > oldDistance and newDistance > 80:
                     state = "approachingWall"
                     high_int_val = oldDistance + 1
                     while newDistance > high_int_val:
@@ -240,10 +240,10 @@ def main():
                         pivot_left(.075)
                     print(state)
                     return  # is return now, change back to break after test
-                #if newDistance > oldDistance:
-                #    state = "approachingWall"
-                 #   print(state)
-                #    return  # is return now, change back to break after test
+                if newDistance > oldDistance:
+                    state = "approachingWall"
+                    print(state)
+                    return  # is return now, change back to break after test
 
                 oldDistance = newDistance
         '''    

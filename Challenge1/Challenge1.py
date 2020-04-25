@@ -201,7 +201,7 @@ def main():
                 if oldDistance > 80:
                     time_value = .185
                 else:
-                    time_value = .25
+                    time_value = .2
                 pivot_left(time_value)
                 time.sleep(1)
                 newDistance = get_distance()
@@ -222,7 +222,7 @@ def main():
                 if oldDistance > 80:
                     time_value = .185
                 else:
-                    time_value = .25
+                    time_value = .2
                 pivot_right(time_value)
                 time.sleep(1)
                 newDistance = get_distance()

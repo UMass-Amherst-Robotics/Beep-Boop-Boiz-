@@ -165,7 +165,7 @@ def main():
                 state = "seekingCorner"
                 print(state)
 
-        elif state == "seekingCorner" and status == '':
+        elif state == "seekingCorner":
             pivot_left(.25)
             leftValue = get_distance()
             pivot_right(.5)
@@ -179,7 +179,7 @@ def main():
                     newDistance = get_distance()
                     if newDistance < oldDistance:
                         state = "cornerFoundMovingLeft"
-                        status = 'Left'
+                        #status = 'Left'
                         print(state)
                         break
                     oldDistance = newDistance
@@ -191,7 +191,7 @@ def main():
                     newDistance = get_distance()
                     if newDistance < oldDistance:
                         state = "cornerFoundMovingRight"
-                        status = 'Right'
+                       # status = 'Right'
                         print(state)
                         break
                     oldDistance = newDistance

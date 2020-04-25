@@ -200,7 +200,7 @@ def main():
             oldDistance = get_distance()
             while True:
                 if oldDistance > 100:
-                    time_value = .21
+                    time_value = .22
                 else:
                     time_value = .25
                 pivot_left(time_value)
@@ -225,7 +225,7 @@ def main():
             oldDistance = get_distance()
             while True:
                 if oldDistance > 100:
-                    time_value = .21
+                    time_value = .22
                 else:
                     time_value = .25
                 pivot_right(time_value)

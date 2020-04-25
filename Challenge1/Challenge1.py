@@ -176,24 +176,34 @@ def main():
     state = "approachingWall"  # initial state is when the robot is approaching the wall, theoretically from any angle
     status = ''  # possible status variable that we decided not to implement
     while True:
-
+        total_distance = 0
         # if the robot is approaching the wall, it will get closer and closer by traveling shorter distances until it passes a threshold value
         if state == "approachingWall":
             newDistance = get_distance()
-            print(get_distance())
+            #print(get_distance())
             if newDistance > 60:
-                forward(.5)  # moves robot a "long" distance
+                tf = .5
+                forward(tf)  # moves robot a "long" distance
                 time.sleep(1)
                 oldDistance = newDistance
                 newDistance = get_distance()
+                total_distance += abs(oldDistance - newDistance)
+                velocity = (abs(oldDistance - newDistance))/tf
+                print("Total Distance Traveled: " + str(total_distance))
+                print("Velocity: " + velocity)
                 if abs(newDistance - oldDistance) < 2:
                     backwards(.2)  # case where robot gets stuck approaching a wall and fixes itself
                     pivot_right(.25)
             elif 35 < newDistance <= 60:
-                forward(.125)  # moves robot a "short" distance
+                tf = .125
+                forward(tf)  # moves robot a "short" distance
                 time.sleep(1)
                 oldDistance = newDistance
                 newDistance = get_distance()
+                total_distance += abs(oldDistance - newDistance)
+                velocity = (abs(oldDistance - newDistance)) / tf
+                print("Total Distance Traveled: " + str(total_distance))
+                print("Velocity: " + velocity)
                 if abs(newDistance - oldDistance) < 2:  # case where robot gets stuck approaching a wall and fixes itself
                     backwards(.2)
                     pivot_right(.25)
@@ -259,7 +269,7 @@ def main():
                 pivot_left(time_value)  # continues to pivot left
                 time.sleep(1)
                 newDistance = get_distance()
-                print(newDistance)
+                #print(newDistance)
 
                 # possible correction implementation for long distances, decided not to use
 
@@ -294,7 +304,7 @@ def main():
                 pivot_right(time_value)
                 time.sleep(1)
                 newDistance = get_distance()
-                print(newDistance)
+                #print(newDistance)
 
                 # possible correction implementation for long distances, decided not to use
 

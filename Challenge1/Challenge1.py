@@ -205,6 +205,7 @@ def main():
                 pivot_left(time_value)
                 time.sleep(1)
                 newDistance = get_distance()
+                print(newDistance)
                 if newDistance > oldDistance and newDistance > 80:
                     state = "approachingWall"
                     #pivot_left(.125)
@@ -226,6 +227,7 @@ def main():
                 pivot_right(time_value)
                 time.sleep(1)
                 newDistance = get_distance()
+                print(newDistance)
                 if newDistance > oldDistance and newDistance > 80:
                     state = "approachingWall"
                     #pivot_left(.125)

@@ -175,8 +175,9 @@ def test():
 def main():
     state = "approachingWall"  # initial state is when the robot is approaching the wall, theoretically from any angle
     status = ''  # possible status variable that we decided not to implement
+    total_distance = 0
     while True:
-        total_distance = 0
+
         # if the robot is approaching the wall, it will get closer and closer by traveling shorter distances until it passes a threshold value
         if state == "approachingWall":
             newDistance = get_distance()

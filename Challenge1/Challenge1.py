@@ -199,7 +199,7 @@ def main():
         elif state == "cornerFoundMovingLeft":
             oldDistance = get_distance()
             while True:
-                if oldDistance > 80:
+                if oldDistance > 100:
                     time_value = .21
                 else:
                     time_value = .25
@@ -207,14 +207,14 @@ def main():
                 time.sleep(1)
                 newDistance = get_distance()
                 print(newDistance)
-                if newDistance > oldDistance and newDistance > 80:
-                    state = "approachingWall"
-                    high_int_val = oldDistance + 1
-                    while newDistance > high_int_val:
-                        newDistance = get_distance()
-                        pivot_left(.075)
-                    print(state)
-                    return  # is return now, change back to break after test
+              #  if newDistance > oldDistance and newDistance > 80:
+               #     state = "approachingWall"
+               #     high_int_val = oldDistance + 1
+               #     while newDistance > high_int_val:
+                #        newDistance = get_distance()
+                #        pivot_left(.075)
+                #    print(state)
+                #    return  # is return now, change back to break after test
                 if newDistance > oldDistance:
                     state = "approachingWall"
                     print(state)
@@ -224,7 +224,7 @@ def main():
         elif state == "cornerFoundMovingRight":
             oldDistance = get_distance()
             while True:
-                if oldDistance > 70:
+                if oldDistance > 100:
                     time_value = .21
                 else:
                     time_value = .25
@@ -232,14 +232,14 @@ def main():
                 time.sleep(1)
                 newDistance = get_distance()
                 print(newDistance)
-                if newDistance > oldDistance and newDistance > 80:
-                    state = "approachingWall"
-                    high_int_val = oldDistance + 1
-                    while newDistance > high_int_val:
-                        newDistance = get_distance()
-                        pivot_left(.075)
-                    print(state)
-                    return  # is return now, change back to break after test
+                #if newDistance > oldDistance and newDistance > 80:
+                #    state = "approachingWall"
+                #    high_int_val = oldDistance + 1
+                #    while newDistance > high_int_val:
+                #        newDistance = get_distance()
+                #        pivot_left(.075)
+                #    print(state)
+                #    return  # is return now, change back to break after test
                 if newDistance > oldDistance:
                     state = "approachingWall"
                     print(state)
